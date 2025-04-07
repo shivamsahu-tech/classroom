@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  root to: redirect("/classroom")
+  get "classroom" => "home#index"
+  post '/classroom/create' => 'home#create'
+  delete '/classroom/:id', to: 'home#destroy', as: 'delete_classroom'
+  get "classroom/:id" => "classrooms#index"
+
+  get "classroom/:id/assignment" => "classrooms#assignment"
+  get "classroom/:id/group-assignment" => "classrooms#group_assignment"
+  get "classroom/:id/learning-content" => "classrooms#learning_content"
+  get "classroom/:id/self-group" => "classrooms#self_group"
+  get "classroom/:id/manage-students" => "classrooms#manage_students"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
